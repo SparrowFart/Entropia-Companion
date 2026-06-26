@@ -1,5 +1,3 @@
----
-
 # ChatGPT Workflow
 
 When assisting with this project:
