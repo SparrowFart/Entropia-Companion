@@ -24,10 +24,18 @@ class SyncService:
     def full_sync(self):
         print("Starting full Nexus synchronization...")
 
-        for endpoint in ENDPOINTS:
-            self.sync_endpoint(endpoint)
+        successful_endpoints = []
+        failed_endpoints = []
 
-        print("Full Nexus synchronization complete.")
+        for endpoint in ENDPOINTS:
+            try:
+                record_count = self.sync_endpoint(endpoint)
+                successful_endpoints.append((endpoint, record_count))
+            except Exception as error:
+                failed_endpoints.append((endpoint, str(error)))
+                print(f"FAILED {endpoint}: {error}")
+
+        self.print_sync_summary(successful_endpoints, failed_endpoints)
 
     def sync_endpoint(self, endpoint):
         print(f"Downloading {endpoint}...")
@@ -82,6 +90,7 @@ class SyncService:
         connection.close()
 
         print(f"Stored {len(records)} active records from {endpoint}.")
+        return len(records)
 
     def mark_removed_records(self, cursor, endpoint, active_record_ids, synced_at):
         cursor.execute(
@@ -113,25 +122,48 @@ class SyncService:
         if removed_record_ids:
             print(f"Marked {len(removed_record_ids)} removed records from {endpoint}.")
 
+    def print_sync_summary(self, successful_endpoints, failed_endpoints):
+        print("\n======================================")
+        print("Synchronization Complete")
+        print("======================================")
+        print(f"Successful: {len(successful_endpoints)}")
+        print(f"Failed: {len(failed_endpoints)}")
+
+        if failed_endpoints:
+            print("\nFailed Endpoints")
+            print("----------------")
+
+            for endpoint, error in failed_endpoints:
+                print(f"{endpoint}")
+                print(f"  {error}")
+
+        print("======================================")
+
     def get_record_id(self, record):
-        if "Id" in record:
-            return str(record["Id"])
+        if isinstance(record, dict):
+            if "Id" in record:
+                return str(record["Id"])
 
-        if "ItemId" in record:
-            return str(record["ItemId"])
+            if "ItemId" in record:
+                return str(record["ItemId"])
 
-        raise ValueError(f"Could not find record ID for record: {record}")
+        json_text = json.dumps(record, sort_keys=True)
+        return hashlib.sha256(json_text.encode("utf-8")).hexdigest()
 
     def get_record_name(self, record):
-        if "Name" in record:
-            return record.get("Name")
+        if isinstance(record, dict):
+            if "Name" in record:
+                return record.get("Name")
 
-        if "Item" in record and isinstance(record["Item"], dict):
-            return record["Item"].get("Name")
+            if "Item" in record and isinstance(record["Item"], dict):
+                return record["Item"].get("Name")
 
         return None
 
     def get_record_category(self, record):
+        if not isinstance(record, dict):
+            return None
+
         category = record.get("Category")
 
         if isinstance(category, dict):
