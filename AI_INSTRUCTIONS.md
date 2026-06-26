@@ -1,3 +1,32 @@
+---
+
+# ChatGPT Workflow
+
+When assisting with this project:
+
+1. Read `AI_INSTRUCTIONS.md` first.
+2. Read `PROJECT_STATE.md`.
+3. Read `DECISIONS.md`.
+4. Read `ROADMAP.md`.
+5. Read `FEATURES.md`.
+6. Read `DATABASE.md`.
+7. Read `CHANGELOG.md`.
+
+Before making significant code changes:
+
+* Understand the existing implementation.
+* Reuse existing systems where possible.
+* Avoid duplicate functionality.
+* Explain architectural changes before implementing them.
+
+When a coding session ends:
+
+* Suggest updates to the documentation if needed.
+* Ensure the project remains internally consistent.
+
+The goal is to leave the repository in a better state after every session.
+
+
 # Entropia Companion - AI Development Guide
 
 ## Project Vision
