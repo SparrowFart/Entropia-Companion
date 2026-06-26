@@ -1,30 +1,30 @@
 # Entropia Companion - Project State
 
-## Current status
-- Python 3.11 used.
-- Virtual environment created: venv
-- VS Code installed and configured.
-- Python interpreter set to venv.
-- SQLite database created: companion.db
-- Database initializes successfully.
-- Test skill seed system created.
+## Purpose
+A desktop companion for Entropia Universe that helps the player make better decisions based on their own avatar's skills.
 
-## Current structure
-- main.py
-- companion.db
-- app/database/database.py
-- app/database/seed_data.py
-- app/database/queries.py
+## Current Status
+- Project initialized.
+- GitHub repository connected.
+- Local Git working.
+- SQLite database created.
+- Basic application structure created.
 
-## Current design decision
-- App will be simple and fast.
-- Main navigation: Dashboard, Skills, Planner, Import, More.
-- Character header always visible.
-- Planner supports:
-  - Cheapest PED route
-  - Fewest chips
-  - Fastest gain
-  - Compare all
+## Planned Features
+- Skill importer
+- Weapon database
+- Armor database
+- Amplifier database
+- Creature database
+- Healing tool database
+- Skill progression planner
+- "What should I use next?" recommendations
+- Damage, DPP, Efficiency, Range, SIB, HA and all weapon statistics
+- Compare equipment
+- Hunting cost calculator
+- Mining planner
+- Crafting planner
+- Future Entropia Nexus API integration
 
-## Next step
-Create ROADMAP.md.
+## Next Development Goal
+Build the local database and synchronize data from Entropia Nexus.
