@@ -1,73 +1,174 @@
-# AI Instructions
+# Entropia Companion - AI Development Guide
 
-## Purpose
+## Project Vision
 
-This repository is developed together with ChatGPT.
+The goal of this project is to build the best desktop companion available for Entropia Universe.
 
-These instructions tell any future AI assistant how to work on this project.
+The application should eventually become a complete planning and analysis tool that allows a player to understand exactly where they are, where they are going, and what equipment or skills they should work towards next.
 
----
-
-## General Rules
-
-* Never redesign working systems unless requested.
-* Preserve existing architecture whenever possible.
-* Keep code clean and modular.
-* Prefer readability over clever code.
-* Explain decisions before making major architectural changes.
-* If a feature requires restructuring, explain why first.
+The application must be modular, fast, easy to maintain and designed to continue growing for years.
 
 ---
 
-## Coding Style
+# Primary Objectives
 
-* Use clear variable names.
-* Keep functions small.
-* Comment non-obvious logic.
-* Avoid duplicate code.
-* Follow existing project structure.
+The application will eventually support:
+
+* Entropia Nexus synchronization
+* Avatar skill tracking
+* Weapon database
+* Armor database
+* Amplifier database
+* Healing tool database
+* Creature database
+* Mining database
+* Crafting database
+* Mission tracking
+* Codex tracking
+* Economy tracking
+* Equipment comparison
+* Skill requirement calculator
+* Upgrade planner
+* Hunting cost calculator
+* Mining planner
+* Crafting planner
+* Loot analysis
+* Profit/Loss tracking
+* Best weapon recommendations
+* Best armor recommendations
+* "What should I use next?" planning
+
+The architecture must always support future expansion.
 
 ---
 
-## Development Workflow
+# Development Philosophy
 
-When implementing a feature:
+Always improve the project.
 
-1. Read PROJECT_STATE.md.
-2. Read ROADMAP.md.
-3. Read DECISIONS.md.
-4. Read DATABASE.md.
-5. Understand existing architecture before writing code.
-6. Update documentation after significant changes.
+Never rewrite working systems unless requested.
+
+Never introduce unnecessary complexity.
+
+Choose readable code over clever code.
+
+Keep functions focused on a single responsibility.
+
+Build reusable modules whenever possible.
+
+Think long-term.
 
 ---
 
-## Documentation
+# Before Writing Code
+
+Always read:
+
+1. PROJECT_STATE.md
+2. ROADMAP.md
+3. DECISIONS.md
+4. DATABASE.md
+5. FEATURES.md
+6. CHANGELOG.md
+
+Understand the current architecture before making changes.
+
+---
+
+# Documentation Rules
 
 Whenever functionality changes:
 
-* Update PROJECT_STATE.md.
-* Update ROADMAP.md if priorities change.
-* Update FEATURES.md for new features.
-* Update DATABASE.md if schema changes.
-* Update CHANGELOG.md.
+* Update PROJECT_STATE.md
+* Update FEATURES.md
+* Update CHANGELOG.md
+
+Whenever priorities change:
+
+* Update ROADMAP.md
+
+Whenever architecture changes:
+
+* Update DECISIONS.md
+
+Whenever database changes:
+
+* Update DATABASE.md
+
+Documentation is part of the project.
 
 ---
 
-## Goal
+# Architecture Rules
 
-Build the best possible desktop companion for Entropia Universe, including:
+Avoid tightly coupled code.
 
-* Entropia Nexus synchronization
-* Skill tracking
-* Equipment planner
-* Hunting planner
-* Mining planner
-* Crafting planner
-* Skill requirement calculator
-* "What should I use next?" recommendations
-* Complete equipment statistics
-* Future extensibility
+Keep modules independent.
 
-Quality and maintainability are more important than speed.
+Avoid circular imports.
 
+Avoid global variables unless absolutely necessary.
+
+Database access should remain centralized.
+
+Business logic should not be mixed with UI code.
+
+UI should display information.
+
+Logic should calculate information.
+
+Database should store information.
+
+---
+
+# Coding Standards
+
+Use descriptive names.
+
+Keep functions short.
+
+Keep files organized.
+
+Avoid duplicated logic.
+
+Comment non-obvious code.
+
+Prefer maintainability over micro-optimizations.
+
+Follow existing naming conventions.
+
+---
+
+# Git Workflow
+
+After completing work:
+
+1. Update documentation.
+2. Test the application.
+3. Commit changes.
+4. Push to GitHub.
+
+Commit messages should clearly describe the work completed.
+
+---
+
+# Decision Making
+
+When multiple approaches exist:
+
+Prefer the solution that:
+
+* scales better
+* is easier to maintain
+* is easier to understand
+* avoids technical debt
+
+Do not choose shortcuts that make future development harder.
+
+---
+
+# Long-Term Goal
+
+Create the definitive companion application for Entropia Universe.
+
+Every feature should move the project closer to that goal.
