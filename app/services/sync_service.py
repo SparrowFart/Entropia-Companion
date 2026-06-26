@@ -2,7 +2,8 @@
 Synchronization Service
 
 Generic Nexus mirror:
-downloads Nexus endpoints and stores them by endpoint/category/name.
+downloads every endpoint listed in nexus_endpoints.py
+and stores records by endpoint/category/name.
 """
 
 import hashlib
@@ -11,6 +12,7 @@ from datetime import datetime
 
 from app.database.database import get_connection
 from app.services.nexus_api import NexusAPI
+from app.services.nexus_endpoints import ENDPOINTS
 
 
 class SyncService:
@@ -19,16 +21,10 @@ class SyncService:
     def __init__(self):
         self.api = NexusAPI()
 
-        self.supported_endpoints = [
-            "skills",
-            "professions",
-            "weapons"
-        ]
-
     def full_sync(self):
         print("Starting full Nexus synchronization...")
 
-        for endpoint in self.supported_endpoints:
+        for endpoint in ENDPOINTS:
             self.sync_endpoint(endpoint)
 
         print("Full Nexus synchronization complete.")
