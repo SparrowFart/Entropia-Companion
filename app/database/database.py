@@ -55,6 +55,34 @@ def initialize_database():
         ON nexus_raw_data(is_removed)
     """)
 
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS characters (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            full_name TEXT NOT NULL UNIQUE,
+            current_hp REAL NOT NULL DEFAULT 0,
+            total_skill_count REAL NOT NULL DEFAULT 0,
+            skills_last_updated TEXT
+        )
+    """)
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS character_skills (
+            character_id INTEGER NOT NULL,
+            skill_name TEXT NOT NULL,
+            skill_value REAL NOT NULL DEFAULT 0,
+            last_updated TEXT,
+            PRIMARY KEY (character_id, skill_name),
+            FOREIGN KEY (character_id) REFERENCES characters(id)
+        )
+    """)
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS app_settings (
+            key TEXT PRIMARY KEY,
+            value TEXT
+        )
+    """)
+
     connection.commit()
     connection.close()
 
