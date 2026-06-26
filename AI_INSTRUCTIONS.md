@@ -1,8 +1,10 @@
-# Entropia Companion - AI Development Guide
+Entropia Companion - AI Development Guide
 
 ---
 
 # 🚨 READ THIS FIRST
+
+This file is the operating manual for any AI assistant working on this repository.
 
 Before writing **any** code:
 
@@ -22,31 +24,74 @@ Reuse existing systems whenever possible.
 
 Do not redesign working systems unless explicitly requested.
 
+Do not create duplicate systems.
+
+Do not remove features unless explicitly requested.
+
 Every coding session should leave the project in a better state than it was before.
+
+---
+
+# User Workflow Rules
+
+The project owner prefers:
+
+* One step at a time.
+* Short, direct instructions.
+* No long explanations unless requested.
+* Full file replacements when code changes are needed.
+* Beginner-friendly comments in code when helpful.
+* No unnecessary redesigns.
+* No guessing when requirements are unclear.
+
+If a step-by-step setup is being done, give **one step only**, then wait for confirmation.
 
 ---
 
 # Project Vision
 
-The goal of this project is to build the ultimate desktop companion application for **Entropia Universe**.
+The goal is to build the ultimate desktop companion application for **Entropia Universe**.
 
-The application should help a player answer questions such as:
+The application should help the player answer questions such as:
 
 * What should I use next?
 * Which weapon is best for my current skills?
 * Which armor is most economical?
 * What creatures should I hunt?
 * What skills do I still need?
+* How far am I from using this weapon properly?
 * How much will my next upgrade cost?
-* Which setup gives me the best efficiency?
+* Which setup gives the best efficiency?
+* What is the cheapest or smartest progression path?
 
-The application should become a complete planning and analysis tool.
+The application should become a complete planning, tracking and analysis tool.
+
+---
+
+# Core Purpose
+
+The application must allow the player to make better Entropia Universe decisions using:
+
+* avatar skills
+* weapon data
+* armor data
+* amplifier data
+* healing tool data
+* creature data
+* costs
+* efficiency
+* skill requirements
+* progression goals
+
+The main long-term feature is:
+
+> Given my current skills and resources, what should I use next?
 
 ---
 
 # Long-Term Goals
 
-The application will eventually support:
+The application should eventually support:
 
 * Entropia Nexus synchronization
 * Avatar synchronization
@@ -66,13 +111,62 @@ The application will eventually support:
 * Economy analysis
 * Equipment comparison
 * Skill requirement calculator
+* Skill gap calculator
 * Upgrade planner
 * Hunting planner
 * Mining planner
 * Crafting planner
-* "What should I use next?" recommendations
+* Weapon recommendations
+* Armor recommendations
+* Creature recommendations
+* Setup recommendations
 * Complete equipment statistics
-* Future expansion through modular architecture
+* Future modular expansion
+
+---
+
+# Required Equipment Statistics
+
+The system must eventually support detailed item and equipment stats, including but not limited to:
+
+* ammo burn
+* damage
+* attacks per minute
+* damage per second
+* damage per PEC
+* efficiency
+* durability
+* range
+* reload
+* SIB
+* profession requirements
+* hit ability
+* critical hit ability
+* maxed/unmaxed status
+* skill requirements
+* enhancer slots
+* amplifier compatibility
+* decay
+* total cost per shot
+* total cost per kill
+* effective damage
+* markup impact
+
+---
+
+# Skill Planning Requirements
+
+The system must eventually be able to answer:
+
+* Can I use this weapon effectively?
+* Is this weapon maxed for me?
+* What skills/professions do I still need?
+* How far off am I from using it properly?
+* What should I skill next?
+* What is the next efficient weapon for me?
+* Which weapon gives the best value for my current skills?
+* Which setup is too advanced for me?
+* Which setup is wasting PED?
 
 ---
 
@@ -116,6 +210,10 @@ Database access should remain centralized.
 
 Never mix UI code with business logic.
 
+Never hard-code data that belongs in the database.
+
+Prefer clear service modules over large all-in-one files.
+
 ---
 
 # Coding Standards
@@ -136,16 +234,23 @@ Follow the project's existing naming conventions.
 
 Never introduce breaking changes without explanation.
 
+Prefer full file replacements when giving code to the project owner.
+
 ---
 
-# Workflow
+# Workflow Before Implementing Features
 
 Before implementing a feature:
 
 1. Understand the current implementation.
 2. Check whether a similar system already exists.
 3. Extend existing systems before creating new ones.
-4. Explain major architectural changes before implementing them.
+4. Check whether database changes are needed.
+5. Explain major architectural changes before implementing them.
+
+---
+
+# Workflow After Implementing Features
 
 After implementing a feature:
 
@@ -185,6 +290,63 @@ Never allow documentation to become outdated.
 
 ---
 
+# Database Rules
+
+SQLite is the local database unless the project owner decides otherwise.
+
+Do not commit local `.db` files.
+
+Database schema changes must be documented in `DATABASE.md`.
+
+Database access should be centralized.
+
+Avoid scattering raw SQL throughout the project.
+
+Use clear table names and field names.
+
+Design tables for future expansion.
+
+---
+
+# API Rules
+
+Entropia Nexus synchronization is a long-term goal.
+
+API code should be isolated from UI code.
+
+API response handling should be clean and testable.
+
+Do not hard-code API secrets.
+
+Do not commit tokens, passwords or `.env` files.
+
+If API data is stored locally, document where and how.
+
+---
+
+# Recommendation Engine Rules
+
+The recommendation system should be built carefully.
+
+It should consider:
+
+* player skills
+* maxed/unmaxed status
+* weapon efficiency
+* cost per shot
+* damage output
+* markup
+* amplifier compatibility
+* creature choice
+* survivability
+* long-term progression
+
+Do not build this as one giant function.
+
+Use small calculation modules that can be tested and improved.
+
+---
+
 # Decision Making
 
 When multiple solutions exist, prefer the one that:
@@ -194,6 +356,7 @@ When multiple solutions exist, prefer the one that:
 * scales better
 * avoids future rewrites
 * minimizes technical debt
+* keeps data, logic and UI separated
 
 Do not optimize prematurely.
 
@@ -203,9 +366,7 @@ Build for the future without over-engineering.
 
 # Communication
 
-When suggesting major changes:
-
-Explain:
+When suggesting major changes, explain:
 
 * why the change is needed
 * advantages
@@ -230,13 +391,15 @@ Never commit virtual environments.
 
 Never commit secrets, passwords or API keys.
 
+Never commit local database files unless explicitly requested.
+
 Keep `.gitignore` up to date.
 
 ---
 
 # Project Success
 
-The project is successful if it helps a player make better decisions inside Entropia Universe.
+The project is successful if it helps the player make better decisions inside Entropia Universe.
 
 Every new feature should move the project closer to that goal.
 
